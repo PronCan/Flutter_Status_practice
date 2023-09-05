@@ -12,14 +12,6 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  bool showTitle = true;
-
-  void toggleTitle() {
-    setState(() {
-      showTitle = !showTitle;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,16 +22,13 @@ class _AppState extends State<App> {
           ),
         ),
       ),
-      home: Scaffold(
-        backgroundColor: const Color(0xFFF4EDDB),
+      home: const Scaffold(
+        backgroundColor: Color(0xFFF4EDDB),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              showTitle ? const MyLargeTitle() : const Text('nothing'),
-              IconButton(
-                  onPressed: toggleTitle,
-                  icon: const Icon(Icons.remove_red_eye))
+              MyLargeTitle(),
             ],
           ),
         ),
@@ -50,25 +39,10 @@ class _AppState extends State<App> {
 
 //_AppState 에서 위젯 별도 분리
 
-class MyLargeTitle extends StatefulWidget {
+class MyLargeTitle extends StatelessWidget {
   const MyLargeTitle({
     super.key,
   });
-
-  @override
-  State<MyLargeTitle> createState() => _MyLargeTitleState();
-}
-
-class _MyLargeTitleState extends State<MyLargeTitle> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
